@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // Fetch Statistics for Dashboard
 async function fetchStats() {
     try {
-        const response = await fetch(`${API_BASE_URL}/admin/stats`);
+        const response = await fetch(`${API_BASE_URL}/admin/stats`, {
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+        });
         stats = await response.json();
         updateStatsUI();
     } catch (err) {
