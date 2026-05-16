@@ -31,6 +31,8 @@ export default function CategoryResultsScreen({ navigation, route }) {
       let data;
       if (isSearch && initialSearchQuery) {
         data = await api.search(initialSearchQuery);
+      } else if (categoryName === 'Tous') {
+        data = await api.getPrestataires();
       } else {
         data = await api.getPrestatairesByMetier(categoryName);
       }
@@ -68,7 +70,6 @@ export default function CategoryResultsScreen({ navigation, route }) {
         </TouchableOpacity>
         <View style={styles.headerTitleContainer}>
            <Text style={styles.headerTitle}>{isSearch ? 'Résultats de recherche' : categoryName}</Text>
-           <Text style={styles.headerSubtitle}>{providers.length} prestataires trouvés</Text>
         </View>
       </View>
 

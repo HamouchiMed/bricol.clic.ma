@@ -1,0 +1,35 @@
+/* Sidebar navigation active state */
+.nav-item.active {
+    background-color: #1e293b; /* slate-800 */
+    color: #60a5fa; /* blue-400 */
+    border-left: 4px solid #3b82f6; /* blue-500 */
+}
+
+/* Transitions */
+.tab-content {
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Custom scrollbar for better look */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Image zoom on hover for document verification */
+.doc-img {
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+.doc-img:hover {
+    transform: scale(1.02);
+}

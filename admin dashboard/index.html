@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bricol.clic Admin Dashboard</title>
+    <!-- Tailwind CDN for easy styling without build tools -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-slate-900 text-white flex flex-col">
+            <div class="p-6 border-b border-slate-800">
+                <h1 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="wrench" class="text-blue-400"></i>
+                    Admin Bricol.clic
+                </h1>
+            </div>
+            <nav class="flex-1 p-4 space-y-2">
+                <button onclick="switchTab('dashboard')" class="nav-item active w-full flex items-center gap-3 p-3 rounded-lg transition-colors hover:bg-slate-800" id="nav-dashboard">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Tableau de bord
+                </button>
+                <button onclick="switchTab('prestataires')" class="nav-item w-full flex items-center gap-3 p-3 rounded-lg transition-colors hover:bg-slate-800" id="nav-prestataires">
+                    <i data-lucide="user-cog" class="w-5 h-5"></i> Tous les Prestataires
+                    <span class="ml-auto bg-red-500 text-xs px-2 py-0.5 rounded-full" id="prestataires-count">0</span>
+                </button>
+                <button onclick="switchTab('users')" class="nav-item w-full flex items-center gap-3 p-3 rounded-lg transition-colors hover:bg-slate-800" id="nav-users">
+                    <i data-lucide="users" class="w-5 h-5"></i> Gestion des Utilisateurs
+                </button>
+                <button onclick="switchTab('missions')" class="nav-item w-full flex items-center gap-3 p-3 rounded-lg transition-colors hover:bg-slate-800" id="nav-missions">
+                    <i data-lucide="briefcase" class="w-5 h-5"></i> Contrôle des Missions
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-10">
+                <h2 id="page-title" class="text-xl font-semibold text-gray-800">Vue d'ensemble</h2>
+            </header>
+
+            <div id="content-area" class="p-6">
+                <!-- Dashboard Tab -->
+                <div id="tab-dashboard" class="tab-content space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Card 1: All Users -->
+                        <div onclick="switchTab('users')" class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">Utilisateurs</p>
+                                <i data-lucide="users" class="text-blue-500 w-8 h-8"></i>
+                            </div>
+                            <h3 id="stat-total-users" class="text-2xl font-bold mt-2">...</h3>
+                            <p class="text-blue-400 text-xs mt-2">Total plateforme</p>
+                        </div>
+
+                        <!-- Card 2: Clients -->
+                        <div onclick="switchTab('users')" class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">Clients</p>
+                                <i data-lucide="user" class="text-cyan-500 w-8 h-8"></i>
+                            </div>
+                            <h3 id="stat-total-clients" class="text-2xl font-bold mt-2">...</h3>
+                            <p class="text-green-500 text-xs mt-2">↑ Données en direct</p>
+                        </div>
+
+                        <!-- Card 3: Providers -->
+                        <div onclick="switchTab('prestataires')" class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">Prestataires</p>
+                                <i data-lucide="user-cog" class="text-purple-500 w-8 h-8"></i>
+                            </div>
+                            <h3 id="stat-total-providers" class="text-2xl font-bold mt-2">...</h3>
+                            <p class="text-green-500 text-xs mt-2">↑ Données en direct</p>
+                        </div>
+
+                        <!-- Card 4: Missions -->
+                        <div onclick="switchTab('missions')" class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">Missions</p>
+                                <i data-lucide="briefcase" class="text-green-500 w-8 h-8"></i>
+                            </div>
+                            <h3 id="stat-total-missions" class="text-2xl font-bold mt-2">...</h3>
+                            <p id="stat-active-missions" class="text-blue-500 text-xs mt-2">0 actuellement actives</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Derniers prestataires</h3>
+                                <i data-lucide="user-check" class="w-5 h-5 text-purple-500"></i>
+                            </div>
+                            <div id="dashboard-recent-prestataires" class="space-y-3">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Dernières missions</h3>
+                                <i data-lucide="briefcase" class="w-5 h-5 text-green-500"></i>
+                            </div>
+                            <div id="dashboard-recent-missions" class="space-y-3">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Approvals Tab (HIDDEN BY DEFAULT) -->
+                <div id="tab-prestataires" class="tab-content hidden space-y-4">
+                    <div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        <div class="relative w-full md:w-96">
+                            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                            <input type="text" id="prestataire-search" oninput="renderPrestataires()" placeholder="Rechercher par nom, métier ou téléphone..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50 border-b border-gray-100">
+                                <tr>
+                                    <th class="p-4 text-sm font-semibold text-gray-600 uppercase">Prestataire</th>
+                                    <th class="p-4 text-sm font-semibold text-gray-600 uppercase">Métier</th>
+                                    <th class="p-4 text-sm font-semibold text-gray-600 uppercase">Téléphone</th>
+                                    <th class="p-4 text-sm font-semibold text-gray-600 uppercase">Date d'inscription</th>
+                                    <th class="p-4 text-sm font-semibold text-gray-600 uppercase">Action</th>
+                                    </tr>
+
+                            </thead>
+                            <tbody id="prestataires-table-body">
+                                <!-- Will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Users Tab (HIDDEN BY DEFAULT) -->
+                <div id="tab-users" class="tab-content hidden space-y-4">
+                    <div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        <div class="relative w-full md:w-96">
+                            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                            <input type="text" id="user-search" oninput="renderUsers()" placeholder="Rechercher par nom, email ou téléphone..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    <div class="flex items-center gap-2 w-full md:w-auto">
+                        <button onclick="exportUsersToCSV()" class="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                            <i data-lucide="download" class="w-4 h-4"></i> Exporter CSV
+                        </button>
+                        <span class="text-sm text-gray-500 font-medium whitespace-nowrap">Filtrer par rôle:</span>
+                        <select id="user-role-filter" onchange="renderUsers()" class="w-full md:w-40 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                            <option value="all">Tous</option>
+                            <option value="client">Clients</option>
+                            <option value="provider">Prestataires</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div id="users-table-container">
+                        <!-- Table will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Missions Tab (HIDDEN BY DEFAULT) -->
+                <div id="tab-missions" class="tab-content hidden">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                        <p class="text-gray-500 italic">Interface de contrôle des missions en cours...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Approval Modal -->
+    <div id="approval-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b flex justify-between items-center sticky top-0 bg-white">
+                <h3 class="text-xl font-bold">Infos du prestataire</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600"><i data-lucide="x"></i></button>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8" id="modal-content">
+                <!-- Content injected by JS -->
+            </div>
+            <div class="p-6 border-t bg-gray-50 flex justify-end gap-3 sticky bottom-0">
+                <button onclick="setPrestataireStatus('rejected')" class="px-6 py-2 bg-red-100 text-red-600 rounded-lg font-semibold hover:bg-red-200">Rejeter</button>
+                <button onclick="setPrestataireStatus('suspended')" class="px-6 py-2 bg-orange-100 text-orange-600 rounded-lg font-semibold hover:bg-orange-200">Suspendre</button>
+                <button onclick="setPrestataireStatus('approved')" class="px-6 py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700">Approuver</button>
+                <button onclick="closeModal()" class="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-gray-200">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

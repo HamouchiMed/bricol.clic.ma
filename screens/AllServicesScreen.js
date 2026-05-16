@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Droplet, Zap, Wrench, Paintbrush, Home, ChevronLeft, CalendarDays, Sofa } from 'lucide-react-native';
+import { Droplet, Zap, Wrench, Paintbrush, Home, ChevronLeft, CalendarDays, Sofa, Scissors, Lightbulb, Grid3X3, Hammer, ShieldCheck, Flame, Shirt, Lamp, Users, Monitor, Snowflake, Flower2 } from 'lucide-react-native';
 
 const COLORS = {
   primary: '#2563eb',
@@ -12,25 +12,31 @@ const COLORS = {
 };
 
 const ALL_CATEGORIES = [
-  { id: '1', name: 'Plomberie', icon: <Droplet size={24} color={COLORS.primary} /> },
+  { id: '0', name: 'Tous', icon: <Grid3X3 size={24} color={COLORS.primary} /> },
+  { id: '1', name: 'Plombier', icon: <Droplet size={24} color={COLORS.primary} /> },
   { id: '2', name: 'Électricité', icon: <Zap size={24} color={COLORS.primary} /> },
-  { id: '3', name: 'Carpentry', icon: <Wrench size={24} color={COLORS.primary} /> },
-  { id: '4', name: 'Peinture', icon: <Paintbrush size={24} color={COLORS.primary} /> },
-  { id: '5', name: 'Ménage', icon: <Home size={24} color={COLORS.primary} /> },
-  { id: '6', name: 'Déménagement', icon: <Home size={24} color={COLORS.primary} /> },
-  { id: '7', name: 'Jardinage', icon: <Home size={24} color={COLORS.primary} /> },
-  { id: '8', name: 'Climatisation', icon: <Zap size={24} color={COLORS.primary} /> },
-  { id: '9', name: 'Serrurerie', icon: <Wrench size={24} color={COLORS.primary} /> },
-  { id: '10', name: 'Chauffage', icon: <Zap size={24} color={COLORS.primary} /> },
-  { id: '11', name: 'Coiffeur', icon: <Home size={24} color={COLORS.primary} /> },
-  { id: '12', name: 'Mécanique', icon: <Wrench size={24} color={COLORS.primary} /> },
-  { id: '13', name: 'Informatique', icon: <Zap size={24} color={COLORS.primary} /> },
-  { id: '14', name: 'Cuisine', icon: <Home size={24} color={COLORS.primary} /> },
-  { id: '15', name: 'Décoration', icon: <Paintbrush size={24} color={COLORS.primary} /> },
-  { id: '16', name: 'Construction', icon: <Wrench size={24} color={COLORS.primary} /> },
-  { id: '17', name: 'Électromécanique', icon: <Wrench size={24} color={COLORS.primary} /> },
-  { id: '18', name: 'Organisation des événements', icon: <CalendarDays size={24} color={COLORS.primary} /> },
-  { id: '19', name: 'Tapissier / mobilier', icon: <Sofa size={24} color={COLORS.primary} /> },
+  { id: '3', name: 'Peintre', icon: <Paintbrush size={24} color={COLORS.primary} /> },
+  { id: '4', name: 'Coiffeur', icon: <Scissors size={24} color={COLORS.primary} /> },
+  { id: '5', name: 'Coiffure', icon: <Scissors size={24} color={COLORS.primary} /> },
+  { id: '6', name: 'Climatisation', icon: <Snowflake size={24} color={COLORS.primary} /> },
+  { id: '7', name: 'Jardinage', icon: <Flower2 size={24} color={COLORS.primary} /> },
+  { id: '8', name: 'Informatique', icon: <Monitor size={24} color={COLORS.primary} /> },
+  { id: '9', name: 'Organisation événements', icon: <CalendarDays size={24} color={COLORS.primary} /> },
+  { id: '10', name: 'Carrelage', icon: <Grid3X3 size={24} color={COLORS.primary} /> },
+  { id: '11', name: 'Tapissier', icon: <Sofa size={24} color={COLORS.primary} /> },
+  { id: '12', name: 'Lampes', icon: <Lamp size={24} color={COLORS.primary} /> },
+  { id: '13', name: 'Mécanique', icon: <Wrench size={24} color={COLORS.primary} /> },
+  { id: '14', name: 'Forgeron', icon: <Hammer size={24} color={COLORS.primary} /> },
+  { id: '15', name: 'Boucher', icon: <Home size={24} color={COLORS.primary} /> },
+  { id: '16', name: 'Tailleur', icon: <Shirt size={24} color={COLORS.primary} /> },
+  { id: '17', name: 'Cuir', icon: <Home size={24} color={COLORS.primary} /> },
+  { id: '18', name: 'Ménage', icon: <Home size={24} color={COLORS.primary} /> },
+  { id: '19', name: 'Déménagement', icon: <Home size={24} color={COLORS.primary} /> },
+  { id: '20', name: 'Serrurerie', icon: <ShieldCheck size={24} color={COLORS.primary} /> },
+  { id: '21', name: 'Chauffage', icon: <Flame size={24} color={COLORS.primary} /> },
+  { id: '22', name: 'Décoration', icon: <Paintbrush size={24} color={COLORS.primary} /> },
+  { id: '23', name: 'Cuisine', icon: <Home size={24} color={COLORS.primary} /> },
+  { id: '24', name: 'Babouche', icon: <Home size={24} color={COLORS.primary} /> },
 ];
 
 export default function AllServicesScreen({ navigation }) {

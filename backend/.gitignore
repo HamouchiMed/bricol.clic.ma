@@ -1,0 +1,6 @@
+node_modules/
+.env
+cleanup.js
+update_phone.js
+generate_svgs.js
+generate_pngs.js

@@ -61,10 +61,25 @@ export default function ProviderDetailScreen({ navigation, route }) {
   };
 
   const handleWhatsApp = () => {
-    const phone = displayProvider.phone.replace(/[^0-9]/g, ''); 
+    let phone = displayProvider.phone.replace(/[^0-9+]/g, '');
+    // Convert local Moroccan numbers (06xx, 07xx) to international format
+    if (phone.startsWith('0')) {
+      phone = '212' + phone.substring(1);
+    } else if (!phone.startsWith('212') && !phone.startsWith('+212')) {
+      phone = '212' + phone;
+    }
+    phone = phone.replace('+', '');
     const url = `whatsapp://send?phone=${phone}`;
     Linking.openURL(url).catch(() => {
       Alert.alert('Erreur', 'WhatsApp n\'est pas installé sur votre appareil.');
+    });
+  };
+
+  const handlePhoneCall = () => {
+    const phone = displayProvider.phone.replace(/[^0-9+]/g, '');
+    const url = `tel:${phone}`;
+    Linking.openURL(url).catch(() => {
+      Alert.alert('Erreur', 'Impossible de passer l\'appel.');
     });
   };
 
@@ -166,6 +181,10 @@ export default function ProviderDetailScreen({ navigation, route }) {
       <View style={styles.footer}>
         <TouchableOpacity style={styles.whatsappButton} onPress={handleWhatsApp}>
           <MessageSquare size={24} color={COLORS.white} />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.phoneCallButton} onPress={handlePhoneCall}>
+          <Phone size={24} color={COLORS.white} />
         </TouchableOpacity>
         
         <TouchableOpacity style={styles.bookButton} onPress={handleBook}>
@@ -376,6 +395,14 @@ const styles = StyleSheet.create({
   },
   whatsappButton: {
     backgroundColor: '#25D366',
+    height: 56,
+    width: 56,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  phoneCallButton: {
+    backgroundColor: COLORS.primary,
     height: 56,
     width: 56,
     borderRadius: 16,

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bricol.clic - L'application de services à domicile</title>
+    <meta name="description"
+        content="Trouvez des professionnels de confiance pour tous vos travaux et services à domicile en un seul clic avec Bricol.clic.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                Bricol<span>.clic</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Fonctionnalités</a>
+                <a href="#" class="btn btn-primary open-modal-btn">Tester l'App</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg-blur"></div>
+        <div class="container hero-container">
+            <div class="hero-content reveal">
+                <!-- Mobile Only Logo -->
+                <div class="mobile-logo" style="display: none; margin-bottom: 2rem;">
+                    <a href="#" class="logo" style="font-size: 2rem;">Bricol<span>.clic</span></a>
+                </div>
+
+                <div class="badge"
+                    style="background: rgba(37, 99, 235, 0.1); color: var(--primary); padding: 0.5rem 1rem; border-radius: 99px; display: inline-block; font-weight: 600; font-size: 0.85rem; margin-bottom: 1.5rem;">
+                    ✨ La nouvelle façon de bricoler
+                </div>
+                <h1>Trouvez des pros en <span class="highlight">un clic.</span></h1>
+
+                <!-- Search Simulation (Mobile Only) -->
+                <div class="search-simulation reveal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                    </svg>
+                    <span>Plomberie, électricité...</span>
+                </div>
+
+                <p>La plateforme premium qui connecte les propriétaires exigeants aux meilleurs artisans locaux.</p>
+
+                <!-- Service Category Grid -->
+                <div class="category-grid reveal">
+                    <div class="category-item">
+                        <div class="category-icon">🚰</div>
+                        <span>Plomberie</span>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-icon">⚡</div>
+                        <span>Électricité</span>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-icon">🧹</div>
+                        <span>Ménage</span>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-icon">🎨</div>
+                        <span>Peinture</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary btn-large open-modal-btn">Commencer l'expérience</a>
+                    <a href="#features" class="btn btn-secondary btn-large">En savoir plus</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper reveal" style="transition-delay: 0.2s;">
+                <div class="glass-card">
+                    <img src="assets/hero.png" alt="Bricol.clic App" class="hero-img">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trusted By -->
+    <section class="trusted-by">
+        <div class="container">
+            <div class="trusted-container reveal">
+                <div class="trusted-logo">HABITAT</div>
+                <div class="trusted-logo">BRICO PRO</div>
+                <div class="trusted-logo">DECO.FR</div>
+                <div class="trusted-logo">MAISON & TRAVAUX</div>
+                <div class="trusted-logo">ARTISANAT MAG</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Features -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>L'excellence dans <span class="highlight">chaque détail.</span></h2>
+                <p>Des fonctionnalités conçues pour une expérience sans compromis.</p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-item bento-1 reveal">
+                    <div class="bento-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                            stroke-width="2">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                        </svg>
+                    </div>
+                    <h3>Une Large Gamme de Services</h3>
+                    <p>De la plomberie à l'électricité, en passant par le jardinage et le ménage. Bricol.clic regroupe
+                        tous les experts dont vous avez besoin pour entretenir et sublimer votre habitat.</p>
+                </div>
+
+                <div class="bento-item bento-2 reveal" style="transition-delay: 0.1s;">
+                    <div class="bento-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--white)"
+                            stroke-width="2">
+                            <path
+                                d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                        </svg>
+                    </div>
+                    <h3>Confidentialité & Vérification</h3>
+                    <p>Votre sécurité est notre priorité. Chaque prestataire est rigoureusement vérifié par sa carte
+                        d'identité officielle avant de rejoindre la plateforme.</p>
+                </div>
+
+                <div class="bento-item bento-3 reveal" style="transition-delay: 0.2s;">
+                    <div class="bento-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                    </div>
+                    <h3>Support 24/7</h3>
+                    <p>Une équipe dédiée pour vous accompagner à chaque étape.</p>
+                </div>
+
+                <div class="bento-item bento-4 reveal" style="transition-delay: 0.3s;">
+                    <div class="bento-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </div>
+                    <h3>Disponible à Marrakech</h3>
+                    <p>Nous lançons actuellement nos services en exclusivité à Marrakech. Restez connectés : Bricol.clic
+                        s'étendra très prochainement à l'ensemble du Royaume du Maroc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Previews -->
+    <section id="app-preview" class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Une plateforme, <span class="highlight">deux expériences.</span></h2>
+                <p>Que vous soyez à la recherche d'un service ou que vous souhaitiez proposer vos compétences,
+                    Bricol.clic a été pensé pour vous.</p>
+            </div>
+
+            <div class="app-preview-grid">
+                <!-- Client Side -->
+                <div class="app-preview-item reveal">
+                    <div class="app-preview-content">
+                        <div class="role-badge">Côté Client</div>
+                        <h3>Trouvez la perle rare.</h3>
+                        <p>Parcourez les profils, consultez les avis et réservez votre prestation en quelques secondes.
+                            Un suivi en temps réel pour une sérénité totale.</p>
+                    </div>
+                    <div class="phone-mockup-wrapper">
+                        <div class="phone-mockup">
+                            <img src="assets/client.png" alt="Interface Client" class="app-screen">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider Side -->
+                <div class="app-preview-item reveal" style="transition-delay: 0.1s;">
+                    <div class="app-preview-content">
+                        <div class="role-badge" style="background: var(--dark); color: var(--white);">Côté Artisan</div>
+                        <h3>Gérez votre activité.</h3>
+                        <p>Recevez des missions qualifiées, gérez votre planning et développez votre réputation à
+                            Marrakech. Votre outil de travail tout-en-un.</p>
+                    </div>
+                    <div class="phone-mockup-wrapper">
+                        <div class="phone-mockup">
+                            <img src="assets/provider.png" alt="Interface Artisan" class="app-screen">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" style="background: var(--light);">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Les premiers avis à <span class="highlight">Marrakech.</span></h2>
+                <p>Découvrez les retours de nos premiers utilisateurs et partenaires locaux.</p>
+            </div>
+            <div class="steps-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card reveal">
+                    <div class="quote-icon">“</div>
+                    <p class="testimonial-text">"Enfin une solution moderne pour trouver des artisans de qualité à
+                        Marrakech. L'interface est intuitive et j'ai rapidement trouvé un plombier."</p>
+                    <div class="testimonial-user">
+                        <div class="user-avatar" style="background: linear-gradient(135deg, #2563eb, #60a5fa);">Y</div>
+                        <div class="user-info">
+                            <h4>Yassine B.</h4>
+                            <p>Utilisateur à Marrakech</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card reveal" style="transition-delay: 0.1s;">
+                    <div class="quote-icon">“</div>
+                    <p class="testimonial-text">"En tant qu'électricien, Bricol.clic m'aide à organiser mon planning et
+                        à toucher de nouveaux clients dans ma ville. Très prometteur !"</p>
+                    <div class="testimonial-user">
+                        <div class="user-avatar" style="background: linear-gradient(135deg, #0f172a, #334155);">A</div>
+                        <div class="user-info">
+                            <h4>Ahmed K.</h4>
+                            <p>Électricien certifié</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
+                    <div class="quote-icon">“</div>
+                    <p class="testimonial-text">"J'ai testé l'application pour un petit dépannage. Le concept est génial
+                        et les professionnels sont sérieux. Un vrai plus pour le quartier."</p>
+                    <div class="testimonial-user">
+                        <div class="user-avatar" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">S</div>
+                        <div class="user-info">
+                            <h4>Sara M.</h4>
+                            <p>Cliente à Guéliz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Questions <span class="highlight">Fréquentes.</span></h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Comment sont sélectionnés les artisans ?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Chaque artisan passe un entretien individuel et nous vérifions systématiquement leurs
+                            documents légaux, assurances et références clients.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Le devis est-il gratuit ?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui, la mise en relation et l'obtention de devis via Bricol.clic sont entièrement gratuites
+                            pour les clients.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Quelles sont les garanties en cas de litige ?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Notre service client intervient comme médiateur et nous disposons d'une assurance protection
+                            juridique pour couvrir tous les cas de figure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="download" class="cta-section">
+        <div class="container">
+            <div class="cta-card reveal">
+                <h2>Prêt à transformer <br>votre habitat ?</h2>
+                <p>Téléchargez l'application et rejoignez la communauté Bricol.clic dès aujourd'hui.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large open-modal-btn"
+                        style="background: var(--white); color: var(--primary);">
+                        Essayer maintenant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid reveal">
+            <div class="footer-brand">
+                <a href="#" class="logo"
+                    style="color: var(--dark); margin-bottom: 1.5rem; display: block;">Bricol<span>.clic</span></a>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 320px;">L'excellence du service à
+                    domicile, simplifiée par la technologie. Trouvez, réservez et souriez.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <!-- Simple Social Placeholders -->
+                    <div
+                        style="width: 32px; height: 32px; border-radius: 8px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        f</div>
+                    <div
+                        style="width: 32px; height: 32px; border-radius: 8px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        t</div>
+                    <div
+                        style="width: 32px; height: 32px; border-radius: 8px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        i</div>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Application</h4>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.75rem;"><a href="#features"
+                            style="color: var(--text-muted); text-decoration: none;">Fonctionnalités</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#"
+                            style="color: var(--text-muted); text-decoration: none;">Devenir Prestataire</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Société</h4>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 0.75rem;"><a href="#"
+                            style="color: var(--text-muted); text-decoration: none;">À propos</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#"
+                            style="color: var(--text-muted); text-decoration: none;">Contact</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="#"
+                            style="color: var(--text-muted); text-decoration: none;">Presse</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Restez informé</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Recevez nos conseils et
+                    offres exclusives.</p>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="email" placeholder="votre@email.com"
+                        style="padding: 0.75rem 1rem; border-radius: 12px; border: 1px solid var(--border); flex: 1; font-size: 0.9rem;">
+                    <button class="btn btn-primary" style="padding: 0.75rem;">→</button>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 4rem;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p style="color: var(--text-muted); font-size: 0.85rem;">&copy; 2026 Bricol.clic. Tous droits réservés.
+                </p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#"
+                        style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Confidentialité</a>
+                    <a href="#"
+                        style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Conditions</a>
+                    <a href="#" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Expo Modal -->
+    <div id="expoModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fermer">&times;</button>
+
+            <h2 style="margin-bottom: 2rem;">Tester l'application</h2>
+
+            <div class="modal-step">
+                <span class="step-number">1</span>
+                <h4>Installez Expo Go</h4>
+                <p>Téléchargez l'application Expo Go pour prévisualiser Bricol.clic sur votre smartphone.</p>
+                <div class="modal-downloads">
+                    <a href="https://apps.apple.com/app/expo-go/id982107779" target="_blank" class="store-link">
+                        <svg viewBox="0 0 384 512" width="20" fill="currentColor">
+                            <path
+                                d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+                        </svg>
+                        <div><span>Download on the</span><strong>App Store</strong></div>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=host.exp.exponent" target="_blank"
+                        class="store-link">
+                        <svg viewBox="0 0 512 512" width="20" fill="currentColor">
+                            <path
+                                d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+                        </svg>
+                        <div><span>Get it on</span><strong>Google Play</strong></div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="modal-step" style="margin-bottom: 0;">
+                <span class="step-number">2</span>
+                <h4>Lancez l'expérience</h4>
+                <p>Une fois installé, cliquez sur le bouton ci-dessous depuis votre téléphone pour ouvrir l'application.
+                </p>
+                <a href="exp://sl12qja-fmmed-8081.exp.direct" class="btn expo-btn">
+                    <span>Ouvrir dans Expo Go</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta">
+        <div class="container sticky-cta-container">
+            <div class="sticky-cta-text">
+                <strong>Bricol.clic</strong>
+                <span>Marrakech</span>
+            </div>
+            <button class="btn btn-primary open-modal-btn">Obtenir l'app</button>
+        </div>
+    </div>
+</body>
+
+</html>
