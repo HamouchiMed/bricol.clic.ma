@@ -57,7 +57,7 @@ export default function MissionsHistoryScreen({ navigation, route }) {
 
       <FlatList
         data={filteredMissions}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => item.id ? `${item.source || 'item'}-${item.id}-${index}` : `idx-${index}`}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (
           <TouchableOpacity 

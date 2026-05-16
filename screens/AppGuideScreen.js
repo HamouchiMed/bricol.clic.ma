@@ -26,7 +26,7 @@ export default function AppGuideScreen({ navigation }) {
         <Text style={styles.subtitle}>Voici comment tirer le meilleur parti de votre application :</Text>
         
         {steps.map((step, index) => (
-          <View key={index} style={styles.stepCard}>
+          <View key={step.id ? `${step.source || 'item'}-${step.id}-${index}` : `idx-${index}`} style={styles.stepCard}>
             <View style={styles.iconContainer}>{step.icon}</View>
             <View style={styles.info}>
               <Text style={styles.stepTitle}>{step.title}</Text>

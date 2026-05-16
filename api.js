@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Force use of local IP
-const API_URL = 'http://192.168.1.71:3001/api';
+// Force use of ngrok tunnel
+const API_URL = 'https://goldsmith-verbalize-fridge.ngrok-free.dev/api';
 
 const fetchWithTimeout = async (url, options = {}, timeout = 10000, retries = 2) => {
   for (let i = 0; i < retries; i++) {

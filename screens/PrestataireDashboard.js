@@ -82,7 +82,7 @@ export default function PrestataireDashboard({ navigation }) {
         
         <FlatList
           data={missions}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={(item, index) => item.id ? `mission-${item.source || 'default'}-${item.id}-${index}` : `mission-idx-${index}`}
           contentContainerStyle={styles.list}
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.jobCard} onPress={() => navigation.navigate('MissionDetail', { mission: item })}>

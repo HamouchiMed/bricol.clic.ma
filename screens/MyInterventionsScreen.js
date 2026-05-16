@@ -120,7 +120,7 @@ export default function MyInterventionsScreen({ navigation }) {
       {/* List */}
       <FlatList
         data={filteredData}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => item.id ? `${item.source || 'item'}-${item.id}-${index}` : `idx-${index}`}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (

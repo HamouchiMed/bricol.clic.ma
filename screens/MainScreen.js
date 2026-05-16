@@ -122,8 +122,8 @@ export default function MainScreen({ navigation }) {
         {activeMissions.length > 0 && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Vos Réservations</Text>
-            {activeMissions.map((mission) => (
-              <View key={mission.id} style={styles.activeMissionCard}>
+            {activeMissions.map((mission, index) => (
+              <View key={mission.id ? `${mission.source || 'item'}-${mission.id}-${index}` : `idx-${index}`} style={styles.activeMissionCard}>
                 <View style={styles.activeMissionHeader}>
                   <Text style={styles.activeMissionTitle}>{mission.title}</Text>
                   <View style={[styles.statusBadge, { backgroundColor: mission.status === 'Terminé' ? '#10b981' : (mission.status === 'En route' ? '#3b82f6' : '#fbbf24') }]}>
@@ -148,7 +148,7 @@ export default function MainScreen({ navigation }) {
             data={CATEGORIES}
             horizontal
             showsHorizontalScrollIndicator={false}
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => item.id ? `${item.source || 'item'}-${item.id}-${index}` : `idx-${index}`}
             renderItem={({ item }) => (
               <TouchableOpacity
                 style={styles.categoryCard}
@@ -169,9 +169,9 @@ export default function MainScreen({ navigation }) {
           {loading ? (
             <ActivityIndicator size="large" color={COLORS.primary} style={{ marginTop: 20 }} />
           ) : (
-            providers.map((provider) => (
+            providers.map((provider, index) => (
               <TouchableOpacity
-                key={provider.id}
+                key={provider.id ? `${provider.source || 'item'}-${provider.id}-${index}` : `idx-${index}`}
                 style={styles.providerCard}
                 onPress={() => navigation.navigate('ProviderDetail', { provider })}
               >

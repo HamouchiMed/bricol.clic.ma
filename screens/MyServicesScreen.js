@@ -38,7 +38,7 @@ export default function MyServicesScreen({ navigation }) {
 
       <FlatList
         data={services}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => item.id ? `${item.source || 'item'}-${item.id}-${index}` : `idx-${index}`}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (
           <View style={styles.card}>

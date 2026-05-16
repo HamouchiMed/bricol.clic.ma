@@ -213,9 +213,9 @@ export default function SignupScreen({ navigation }) {
                     >
                       <View style={styles.dropdownList}>
                         <ScrollView style={{maxHeight: 400}}>
-                          {categories.map((cat) => (
+                          {categories.map((cat, idx) => (
                             <TouchableOpacity
-                              key={cat}
+                              key={`${cat}-${idx}`}
                               style={styles.dropdownItem}
                               onPress={() => {
                                 setFormData({ ...formData, metier: cat });

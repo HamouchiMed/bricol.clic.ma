@@ -31,36 +31,42 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 } // 5MB limit
 });
 
-const allPrestatairesSelect = `
-  SELECT
-    p.id AS id,
-    'prestataires' AS source,
-    p.nom,
-    p.metier,
-    p.telephone,
-    p.created_at,
-    'pending'::text AS status,
-    NULL::text AS verification_reason,
-    up.email AS email,
-    NULL::text AS id_card_url
-  FROM prestataires p
-  LEFT JOIN users up ON up.phone = p.telephone
+const mergedPrestatairesSelect = `
+  SELECT * FROM (
+    SELECT *, ROW_NUMBER() OVER(PARTITION BY telephone ORDER BY source DESC) as rn
+    FROM (
+      SELECT
+        p.id AS id,
+        'prestataires' AS source,
+        p.nom,
+        p.metier,
+        p.telephone,
+        p.created_at,
+        'pending'::text AS status,
+        NULL::text AS verification_reason,
+        up.email AS email,
+        NULL::text AS id_card_url
+      FROM prestataires p
+      LEFT JOIN users up ON up.phone = p.telephone
 
-  UNION ALL
+      UNION ALL
 
-  SELECT
-    pr.id AS id,
-    'providers' AS source,
-    pr.nom,
-    pr.metier,
-    pr.telephone,
-    COALESCE(u.created_at, CURRENT_TIMESTAMP) AS created_at,
-    COALESCE(pr.status, 'pending') AS status,
-    pr.verification_reason,
-    u.email AS email,
-    pr.id_card_url
-  FROM providers pr
-  LEFT JOIN users u ON u.id = pr.user_id
+      SELECT
+        pr.id AS id,
+        'providers' AS source,
+        pr.nom,
+        pr.metier,
+        pr.telephone,
+        COALESCE(u.created_at, CURRENT_TIMESTAMP) AS created_at,
+        COALESCE(pr.status, 'pending') AS status,
+        pr.verification_reason,
+        u.email AS email,
+        pr.id_card_url
+      FROM providers pr
+      LEFT JOIN users u ON u.id = pr.user_id
+    ) combined
+  ) dedup
+  WHERE rn = 1
 `;
 
 // Custom Morgan token to log request body (redacting passwords)
@@ -485,7 +491,7 @@ app.get('/api/prestataires', async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT * FROM (
-        ${allPrestatairesSelect}
+        ${mergedPrestatairesSelect}
       ) merged
       ORDER BY created_at DESC, nom
     `);
@@ -506,7 +512,7 @@ app.get('/api/prestataires/metier/:metier', async (req, res) => {
     const result = await pool.query(
       `
       SELECT * FROM (
-        ${allPrestatairesSelect}
+        ${mergedPrestatairesSelect}
       ) merged
       WHERE metier ILIKE $1 OR metier ILIKE $2
       ORDER BY created_at DESC, nom
@@ -526,7 +532,7 @@ app.get('/api/prestataires/:id', async (req, res) => {
     const { id } = req.params;
     const result = await pool.query(`
       SELECT * FROM (
-        ${allPrestatairesSelect}
+        ${mergedPrestatairesSelect}
       ) merged
       WHERE id = $1
       ORDER BY source DESC

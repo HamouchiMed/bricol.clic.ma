@@ -50,7 +50,7 @@ export default function AllServicesScreen({ navigation }) {
       </View>
       <FlatList
         data={ALL_CATEGORIES}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => item.id ? `${item.source || 'item'}-${item.id}-${index}` : `idx-${index}`}
         numColumns={2}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (

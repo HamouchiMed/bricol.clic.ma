@@ -77,8 +77,8 @@ export default function FinancialDashboard({ navigation }) {
             <Text style={styles.sectionTitle}>Transactions récentes</Text>
             <View style={styles.transactionsContainer}>
               {transactions.length > 0 ? (
-                transactions.map(tx => (
-                  <View key={tx.id} style={styles.txRow}>
+                transactions.map((tx, index) => (
+                  <View key={tx.id ? `${tx.source || 'item'}-${tx.id}-${index}` : `idx-${index}`} style={styles.txRow}>
                     <View style={styles.txIcon}>
                       <Wallet size={20} color={COLORS.primary} />
                     </View>

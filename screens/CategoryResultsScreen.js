@@ -98,7 +98,7 @@ export default function CategoryResultsScreen({ navigation, route }) {
       ) : (
         <FlatList
           data={providers}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={(item, index) => item.id ? `${item.source || 'item'}-${item.id}-${index}` : `idx-${index}`}
           contentContainerStyle={styles.listContent}
           renderItem={({ item }) => (
             <TouchableOpacity 
