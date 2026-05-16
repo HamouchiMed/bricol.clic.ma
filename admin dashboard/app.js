@@ -391,7 +391,10 @@ async function deleteUser(id) {
     }
 }
 
-function exportUsersToCSV() {
+function exportUsersToPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
     const searchVal = document.getElementById('user-search').value.toLowerCase();
     const roleFilter = document.getElementById('user-role-filter').value;
 
@@ -404,24 +407,31 @@ function exportUsersToCSV() {
         return matchesSearch && matchesRole;
     });
 
-    const csvRows = [['Nom', 'Rôle', 'Téléphone', 'Email', 'Date Inscription'].join(',')];
-    for (const user of filteredUsers) {
-        csvRows.push([
-            user.name || 'Sans nom',
-            user.role,
-            user.phone,
-            user.email || '',
-            new Date(user.created_at).toLocaleDateString()
-        ].join(','));
-    }
+    // Add Title
+    doc.setFontSize(18);
+    doc.text('Liste des Utilisateurs - Bricol.clic', 14, 22);
+    doc.setFontSize(11);
+    doc.setTextColor(100);
+    doc.text(`Généré le: ${new Date().toLocaleString('fr-FR')}`, 14, 30);
 
-    const csvString = csvRows.join('\n');
-    const blob = new Blob([csvString], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.setAttribute('href', url);
-    a.setAttribute('download', 'utilisateurs_bricol_clic.csv');
-    a.click();
+    // Create Table
+    const tableData = filteredUsers.map(user => [
+        user.name || 'Sans nom',
+        user.role === 'provider' ? 'PRESTATAIRE' : 'CLIENT',
+        user.phone,
+        user.email || 'N/A',
+        new Date(user.created_at).toLocaleDateString('fr-FR')
+    ]);
+
+    doc.autoTable({
+        startY: 35,
+        head: [['Nom', 'Rôle', 'Téléphone', 'Email', 'Date Inscription']],
+        body: tableData,
+        theme: 'striped',
+        headStyles: { fillStyle: [37, 99, 235] } // Use the same primary blue
+    });
+
+    doc.save('utilisateurs_bricol_clic.pdf');
 }
 
 // --- Fetch Missions ---

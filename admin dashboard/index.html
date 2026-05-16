@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body class="bg-gray-100 font-sans">
     <div class="flex h-screen">
@@ -146,8 +149,8 @@
                             <input type="text" id="user-search" oninput="renderUsers()" placeholder="Rechercher par nom, email ou téléphone..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                     <div class="flex items-center gap-2 w-full md:w-auto">
-                        <button onclick="exportUsersToCSV()" class="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                            <i data-lucide="download" class="w-4 h-4"></i> Exporter CSV
+                        <button onclick="exportUsersToPDF()" class="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                            <i data-lucide="file-text" class="w-4 h-4"></i> Exporter PDF
                         </button>
                         <span class="text-sm text-gray-500 font-medium whitespace-nowrap">Filtrer par rôle:</span>
                         <select id="user-role-filter" onchange="renderUsers()" class="w-full md:w-40 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
