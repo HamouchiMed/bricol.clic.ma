@@ -92,7 +92,9 @@ async function switchTab(tabName) {
 // Fetch all prestataires from the table
 async function fetchPrestataires() {
     try {
-        const response = await fetch(`${API_BASE_URL}/prestataires`);
+        const response = await fetch(`${API_BASE_URL}/prestataires`, {
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+        });
         providers = await response.json();
         renderPrestataires();
         updateStatsUI();
@@ -267,7 +269,10 @@ async function setPrestataireStatus(status) {
     try {
         const response = await fetch(`${API_BASE_URL}/admin/prestataires/${selectedProviderId}/status`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': 'true'
+            },
             body: JSON.stringify({ status, reason, source: selectedProviderSource }),
         });
 
@@ -289,7 +294,9 @@ async function setPrestataireStatus(status) {
 // --- Fetch Users ---
 async function fetchUsers() {
     try {
-        const response = await fetch(`${API_BASE_URL}/admin/users`);
+        const response = await fetch(`${API_BASE_URL}/admin/users`, {
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+        });
         users = await response.json();
         renderUsers();
     } catch (err) {
@@ -368,7 +375,10 @@ function renderUsers() {
 async function deleteUser(id) {
     if (!confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')) return;
     try {
-        const response = await fetch(`${API_BASE_URL}/admin/users/${id}`, { method: 'DELETE' });
+        const response = await fetch(`${API_BASE_URL}/admin/users/${id}`, { 
+            method: 'DELETE',
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+        });
         if (response.ok) {
             alert('Utilisateur supprimé avec succès');
             fetchUsers();
@@ -417,7 +427,9 @@ function exportUsersToCSV() {
 // --- Fetch Missions ---
 async function fetchMissions() {
     try {
-        const response = await fetch(`${API_BASE_URL}/admin/missions`);
+        const response = await fetch(`${API_BASE_URL}/admin/missions`, {
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+        });
         missions = await response.json();
         renderMissions();
         renderRecentActivity();
